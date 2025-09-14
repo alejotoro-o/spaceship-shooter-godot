@@ -80,6 +80,12 @@ func start(pos):
 	show()
 	$Explosion.hide()
 	$CollisionPolygon2D.disabled = false
+	
+	# Show the ship visuals again
+	$Ship.show()
+	$Shadow.show()
+	$Exhaust.show()
+	$Exhaust2.show()
 
 
 func _on_explosion_animation_finished():

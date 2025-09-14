@@ -53,7 +53,7 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="asteroid" type="Area2D"]
+[node name="asteroid" type="Area2D" groups=["asteroids"]]
 collision_layer = 2
 script = ExtResource("1_84fqd")
 asteroid_sprites = Array[Texture2D]([ExtResource("2_7gw88"), ExtResource("3_snmap"), ExtResource("4_k5a7f"), ExtResource("5_cyn6k")])

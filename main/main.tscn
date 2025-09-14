@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://qyywat1xdeq7"]
+[gd_scene load_steps=7 format=3 uid="uid://qyywat1xdeq7"]
 
 [ext_resource type="Script" uid="uid://bcwr4cwniix8l" path="res://main/main.gd" id="1_pjrb6"]
 [ext_resource type="PackedScene" uid="uid://568yhxw8244e" path="res://asteroid/asteroid.tscn" id="2_xwkvk"]
+[ext_resource type="Texture2D" uid="uid://blgdvn7dia6cn" path="res://art/PixelBackgroundSeamlessVertically.png" id="3_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://cvs25thdh37v7" path="res://player/player.tscn" id="3_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://bhmxf32w6dd1g" path="res://HUD/hud.tscn" id="4_c651c"]
 
@@ -14,6 +15,14 @@ point_count = 2
 [node name="Main" type="Node"]
 script = ExtResource("1_pjrb6")
 asteroid_scene = ExtResource("2_xwkvk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3wy1v")
 
 [node name="Player" parent="." instance=ExtResource("3_xwkvk")]
 
@@ -37,3 +46,4 @@ curve = SubResource("Curve2D_c651c")
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

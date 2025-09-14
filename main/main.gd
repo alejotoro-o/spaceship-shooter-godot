@@ -5,8 +5,8 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	new_game()
-
+	#new_game()
+	$HUD.show_message("Destroy the Asteroids!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -15,11 +15,13 @@ func _process(delta: float) -> void:
 
 func game_over() -> void:
 	$AsteroidTimer.stop()
+	$HUD.show_game_over()
 	
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	get_tree().call_group("asteroids", "queue_free")
 
 
 func _on_asteroid_timer_timeout() -> void:
