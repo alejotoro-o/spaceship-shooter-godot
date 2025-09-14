@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjerxfj0r8uut"]
+
+[ext_resource type="Texture2D" uid="uid://bnkbcuom3010h" path="res://art/256px/Plasma_Small_png_processed.png" id="1_6aa83"]
+[ext_resource type="Script" uid="uid://ctbajx03s81xh" path="res://projectile/projectile.gd" id="1_makwg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_makwg"]
+radius = 3.0
+height = 22.0
+
+[node name="Projectile" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_makwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_makwg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6aa83")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
